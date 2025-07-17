@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - Video Editor Portfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style1.css">
+    <style>
+        /* Default (Dark) Theme */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #1a202c;
+            /* Dark background */
+            color: #e2e8f0;
+            /* Light text */
+            transition: background-color 0.3s ease, color 0.3s ease;
+            /* Smooth transition for theme change */
+        }
+
+        .bg-gray-900 {
+            background-color: #1a202c;
+        }
+
+        .bg-gray-800 {
+            background-color: #2d3748;
+        }
+
+        .bg-gray-700 {
+            background-color: #4a5568;
+        }
+
+        .text-gray-100 {
+            color: #e2e8f0;
+        }
+
+        .text-gray-300 {
+            color: #cbd5e0;
+        }
+
+        .text-gray-400 {
+            color: #a0aec0;
+        }
+
+        .text-gray-900 {
+            color: #1a202c;
+        }
+
+        /* For input text */
+
+        /* Light Theme Overrides */
+        body.light-theme {
+            background-color: #f7fafc;
+            /* Light background */
+            color: #2d3748;
+            /* Dark text */
+        }
+
+        body.light-theme .bg-gray-900 {
+            background-color: #f7fafc;
+        }
+
+        body.light-theme .bg-gray-800 {
+            background-color: #edf2f7;
+        }
+
+        body.light-theme .bg-gray-700 {
+            background-color: #e2e8f0;
+        }
+
+        body.light-theme .text-gray-100 {
+            color: #2d3748;
+        }
+
+        body.light-theme .text-gray-300 {
+            color: #4a5568;
+        }
+
+        body.light-theme .text-gray-400 {
+            color: #718096;
+        }
+
+        body.light-theme .text-gray-900 {
+            color: #1a202c;
+        }
+
+
+        body.light-theme .text-white {
+            color: #2d3748;
+        }
+
+        /* Input text remains dark */
+
+        /* Adjust specific elements for light theme */
+        body.light-theme header {
+            background-color: #ffffff;
+            /* Lighter header */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            /* Lighter shadow */
+        }
+
+        body.light-theme header a {
+            color: #4a5568;
+            /* Darker nav links */
+        }
+
+        body.light-theme header a.text-indigo-500 {
+            color: #667eea;
+            /* Indigo remains, maybe slightly adjusted */
+        }
+
+        body.light-theme .btn-primary {
+            background-color: #667eea;
+            /* Indigo */
+            color: white;
+        }
+
+        body.light-theme .btn-secondary {
+            background-color: #cbd5e0;
+            /* Lighter gray */
+            color: #2d3748;
+        }
+
+        body.light-theme .portfolio-item,
+        body.light-theme .bg-gray-800,
+        body.light-theme .bg-gray-700,
+        body.light-theme #contact-form {
+            background-color: #ffffff;
+            /* White cards/sections */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            /* Lighter shadow */
+        }
+
+        body.light-theme .portfolio-item .p-6 h3 {
+            color: #2d3748;
+            /* Darker text for titles */
+        }
+
+        body.light-theme .portfolio-item .p-6 p {
+            color: #4a5568;
+            /* Darker text for descriptions */
+        }
+
+        body.light-theme .modal-content {
+            background-color: #ffffff;
+            /* White modal */
+        }
+
+        body.light-theme .modal-close {
+            color: #4a5568;
+            /* Darker close button */
+        }
+
+        body.light-theme .modal-close:hover,
+        body.light-theme .modal-close:focus {
+            color: #2d3748;
+        }
+
+        body.light-theme .hero-bg {
+            background-image: radial-gradient(circle at 10% 20%, rgba(255, 255, 255, .6) 0%, rgba(255, 255, 255, 0) 50%),
+                radial-gradient(circle at 90% 80%, rgba(255, 255, 255, .6) 0%, rgba(255, 255, 255, 0) 50%);
+            background-color: #f7fafc;
+        }
+
+        body.light-theme .hero-bg h1,
+        body.light-theme .hero-bg p {
+            color: #2d3748;
+            /* Darker text for hero section */
+        }
+
+        body.light-theme .shadow-md {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        body.light-theme .shadow-xl {
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        body.light-theme .text-gray-200 {
+            color: #4a5568;
+        }
+
+        /* Label text */
+        body.light-theme .bg-gray-200 {
+            background-color: #e2e8f0;
+        }
+
+        /* Input background */
+        body.light-theme .text-gray-900 {
+            color: #1a202c;
+        }
+
+        /* Input text color */
+        body.light-theme footer {
+            background-color: #edf2f7;
+            color: #718096;
+        }
+
+        body.light-theme footer a {
+            color: #4a5568;
+        }
+
+        body.light-theme .video-strip-container {
+            /* Height of the strip */
+            background-color: white;
+            border-top: 1px solid #333;
+            box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+
+        body.light-theme .video-clip {
+            background-color: white;
+            border: 2px solid #555;
+            color: black;
+            box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Custom scrollbar for better aesthetics */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #2d3748;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #4a5568;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #6b7280;
+        }
+
+        body.light-theme ::-webkit-scrollbar-track {
+            background: #cbd5e0;
+        }
+
+        body.light-theme ::-webkit-scrollbar-thumb {
+            background: #a0aec0;
+        }
+
+        body.light-theme ::-webkit-scrollbar-thumb:hover {
+            background: #718096;
+        }
+
+        /* Smooth scroll behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Hero background pattern */
+        .hero-bg {
+            background-image: radial-gradient(circle at 10% 20%, rgba(0, 0, 0, .6) 0%, rgba(0, 0, 0, 0) 50%),
+                radial-gradient(circle at 90% 80%, rgba(0, 0, 0, .6) 0%, rgba(0, 0, 0, 0) 50%);
+            background-color: #1a202c;
+        }
+
+        /* Custom button styles */
+        .btn-primary {
+            @apply inline-block px-8 py-3 bg-indigo-600 text-white font-semibold rounded-lg shadow-lg hover:bg-indigo-700 transition duration-300 ease-in-out transform hover:-translate-y-1;
+        }
+
+        .btn-secondary {
+            @apply inline-block px-8 py-3 bg-gray-700 text-white font-semibold rounded-lg shadow-lg hover:bg-gray-600 transition duration-300 ease-in-out transform hover:-translate-y-1;
+        }
+
+        /* Portfolio video hover effect */
+        .portfolio-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 0.5rem;
+            /* rounded-lg */
+        }
+
+        .portfolio-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+            z-index: 1;
+        }
+
+        .portfolio-item:hover::before {
+            opacity: 1;
+        }
+
+        .portfolio-item .play-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 3rem;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+            z-index: 2;
+        }
+
+        .portfolio-item:hover .play-icon {
+            opacity: 1;
+        }
+
+        /* Modal specific styles */
+        .modal {
+            display: none;
+            /* Hidden by default */
+            position: fixed;
+            /* Stay in place */
+            z-index: 1000;
+            /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%;
+            /* Full width */
+            height: 100%;
+            /* Full height */
+            overflow: auto;
+            /* Enable scroll if needed */
+            background-color: rgba(0, 0, 0, 0.9);
+            /* Black w/ opacity */
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background-color: #1a202c;
+            margin: auto;
+            padding: 20px;
+            border-radius: 0.75rem;
+            max-width: 90%;
+            max-height: 90%;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .modal-content iframe {
+            width: 100%;
+            height: 0;
+            padding-bottom: 56.25%;
+            /* 16:9 aspect ratio */
+            position: relative;
+        }
+
+        .modal-close {
+            color: #aaa;
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .modal-close:hover,
+        .modal-close:focus {
+            color: white;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+    <script src="js/script1.js"></script>
+
+</head>
+
+<body class="bg-gray-900 text-gray-100 ">
+
+    <!-- Header -->
+    <header class="bg-gray-800 shadow-md py-4 sticky top-0 z-50">
+        <div class="container mx-auto flex justify-between items-center px-4 md:px-6">
+            <a href="#" class="text-2xl font-bold text-indigo-500">Altaf Editor</a>
+            <nav class="hidden md:flex space-x-6">
+                <a href="#home-section" class="hover:text-indigo-400 transition duration-200">Home</a>
+                <a href="#about-section" class="hover:text-indigo-400 transition duration-200">About</a>
+                <a href="#portfolio-section" class="hover:text-indigo-400 transition duration-200">Portfolio</a>
+                <a href="#services-section" class="hover:text-indigo-400 transition duration-200">Services</a>
+                <a href="#testimonials-section" class="hover:text-indigo-400 transition duration-200">Testimonials</a>
+                <a href="#contact-section" class="hover:text-indigo-400 transition duration-200">Contact</a>
+            </nav>
+            <div class="flex items-center space-x-4">
+                <!-- Theme Toggle Button -->
+                <button id="theme-toggle"
+                    class="p-2 rounded-full bg-gray-700 hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-200">
+
+
+
+                    <svg id="moon-icon" class="w-6 h-6 text-yellow-300" xmlns="http://www.w3.org/2000/svg"
+                        fill="currentColor" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z" />
+                    </svg>
+                    <svg id="sun-icon" class="w-6 h-6 text-gray-100 hidden" xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                        <path
+                            d="M12 2.25a.75.75 0 0 1 .75.75v2.25a.75.75 0 0 1-1.5 0V3a.75.75 0 0 1 .75-.75ZM7.5 12a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM18.894 6.166a.75.75 0 0 0-1.06-1.06l-1.591 1.59a.75.75 0 1 0 1.06 1.061l1.591-1.59ZM21.75 12a.75.75 0 0 1-.75.75h-2.25a.75.75 0 0 1 0-1.5H21a.75.75 0 0 1 .75.75ZM17.834 18.894a.75.75 0 0 0 1.06-1.06l-1.59-1.591a.75.75 0 1 0-1.061 1.06l1.59 1.591ZM12 18a.75.75 0 0 1 .75.75V21a.75.75 0 0 1-1.5 0v-2.25A.75.75 0 0 1 12 18ZM7.758 17.303a.75.75 0 0 0-1.061-1.06l-1.591 1.59a.75.75 0 0 0 1.06 1.061l1.591-1.59ZM6 12a.75.75 0 0 1-.75.75H3a.75.75 0 0 1 0-1.5h2.25A.75.75 0 0 1 6 12ZM6.697 7.757a.75.75 0 0 0 1.06-1.06l-1.59-1.591a.75.75 0 0 0-1.061 1.06l1.59 1.591Z" />
+                    </svg>
+
+                </button>
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-button" class="md:hidden text-gray-100 focus:outline-none">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu"
+            class="hidden md:hidden fixed inset-0 bg-gray-900 bg-opacity-95 z-40 flex flex-col items-center justify-center space-y-8">
+            <button id="close-mobile-menu" class="absolute top-6 right-6 text-gray-100 focus:outline-none">
+                <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                    </path>
+                </svg>
+            </button>
+            <a href="#home" class="text-3xl text-gray-100 hover:text-indigo-400 transition duration-200"
+                onclick="hideMobileMenu()">Home</a>
+            <a href="#about" class="text-3xl text-gray-100 hover:text-indigo-400 transition duration-200"
+                onclick="hideMobileMenu()">About</a>
+            <a href="#portfolio" class="text-3xl text-gray-100 hover:text-indigo-400 transition duration-200"
+                onclick="hideMobileMenu()">Portfolio</a>
+            <a href="#services" class="text-3xl text-gray-100 hover:text-indigo-400 transition duration-200"
+                onclick="hideMobileMenu()">Services</a>
+            <a href="#testimonials" class="text-3xl text-gray-100 hover:text-indigo-400 transition duration-200"
+                onclick="hideMobileMenu()">Testimonials</a>
+            <a href="#contact" class="text-3xl text-gray-100 hover:text-indigo-400 transition duration-200"
+                onclick="hideMobileMenu()">Contact</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home-section"
+            class="hero-bg min-h-screen flex items-center justify-center text-center py-20 px-4 content-section">
+            <div class="max-w-4xl mx-auto overlay">
+                <h1 class="text-5xl md:text-7xl font-extrabold leading-tight text-white mb-6 animate-fade-in-up">
+                    Crafting Stories, Frame by Frame.
+                </h1>
+                <p class="text-xl md:text-2xl text-gray-300 mb-10 animate-fade-in-up delay-200">
+                    Your go-to video editor for captivating narratives and stunning visuals.
+                </p>
+                <div class="space-x-4 animate-fade-in-up delay-400">
+                    <a href="#portfolio-section" class="p-2 rounded-lg btn-primary">View Portfolio</a>
+                    <a href="#contact-section" class="p-2 rounded-lg btn-secondary">Get in Touch</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about-section" class="py-20 px-4 bg-gray-800 content-section">
+            <div class="container mx-auto text-center max-w-4xl overlay">
+                <h2 class="text-4xl font-bold text-white mb-8">About Me</h2>
+                <div class="flex flex-col md:flex-row items-center md:space-x-8">
+                    <div class="md:w-1/3 mb-8 md:mb-0">
+                        <img src="profile_pic.jpeg" alt="Your Photo"
+                            class="rounded-full mx-auto shadow-lg w-48 h-48 object-cover">
+                    </div>
+                    <div class="md:w-2/3 text-lg text-gray-300 text-left">
+                        <p class="mb-4">
+                            Hello! I'm Altafali Siddique, a passionate video editor with 5 years of experience
+                            transforming
+                            raw footage into compelling visual stories. My journey in video editing began with a
+                            fascination for narrative structure and the power of visual communication.
+                        </p>
+                        <p class="mb-4">
+                            I specialize in corporate videos, short films, documentaries, social media content,
+                            commercials and music videos. My expertise includes advanced techniques in color grading,
+                            sound design, motion graphics, and seamless transitions, using industry-standard software
+                            like Adobe Premiere Pro, After Effects, and DaVinci Resolve.
+                        </p>
+                        <p>
+                            My goal is to bring your vision to life, ensuring every project not only meets but exceeds
+                            expectations. Let's create something amazing together!
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Section -->
+        <section id="portfolio-section" class="py-20 px-4 bg-gray-900 content-section">
+            <div class="container mx-auto text-center">
+                <h2 class="text-4xl font-bold text-white mb-12">My Work</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Portfolio Item 1 -->
+                    <div
+                        class="bg-gray-800 rounded-lg shadow-xl overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                        <img src="https://placehold.co/600x400/3a3a5a/e0e0e0?text=Project+1" alt="Project 1 Thumbnail"
+                            class="w-full h-auto object-cover rounded-t-lg">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-semibold mb-2">Corporate Brand Film</h3>
+                            <p class="text-gray-400 mb-4">A dynamic film showcasing a company's values and mission.</p>
+                            <a href="#" class="text-indigo-400 hover:text-indigo-300 font-medium">Watch Video &rarr;</a>
+                        </div>
+                    </div>
+                    <!-- Portfolio Item 2 -->
+                    <div
+                        class="bg-gray-800 rounded-lg shadow-xl overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                        <img src="https://placehold.co/600x400/3a3a5a/e0e0e0?text=Project+2" alt="Project 2 Thumbnail"
+                            class="w-full h-auto object-cover rounded-t-lg">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-semibold mb-2">Documentary Short</h3>
+                            <p class="text-gray-400 mb-4">An emotional short documentary exploring local history.</p>
+                            <a href="#" class="text-indigo-400 hover:text-indigo-300 font-medium">Watch Video &rarr;</a>
+                        </div>
+                    </div>
+                    <!-- Portfolio Item 3 -->
+                    <div
+                        class="bg-gray-800 rounded-lg shadow-xl overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                        <img src="https://placehold.co/600x400/3a3a5a/e0e0e0?text=Project+3" alt="Project 3 Thumbnail"
+                            class="w-full h-auto object-cover rounded-t-lg">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-semibold mb-2">Social Media Ad Campaign</h3>
+                            <p class="text-gray-400 mb-4">Engaging short-form videos for a product launch.</p>
+                            <a href="#" class="text-indigo-400 hover:text-indigo-300 font-medium">Watch Video &rarr;</a>
+                        </div>
+                    </div>
+                    <!-- Portfolio Item 4 -->
+                    <div
+                        class="bg-gray-800 rounded-lg shadow-xl overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                        <img src="https://placehold.co/600x400/3a3a5a/e0e0e0?text=Project+4" alt="Project 4 Thumbnail"
+                            class="w-full h-auto object-cover rounded-t-lg">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-semibold mb-2">Wedding Highlight Reel</h3>
+                            <p class="text-gray-400 mb-4">Capturing the magic of a special day.</p>
+                            <a href="#" class="text-indigo-400 hover:text-indigo-300 font-medium">Watch Video &rarr;</a>
+                        </div>
+                    </div>
+                    <!-- Portfolio Item 5 -->
+                    <div
+                        class="bg-gray-800 rounded-lg shadow-xl overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                        <img src="https://placehold.co/600x400/3a3a5a/e0e0e0?text=Project+5" alt="Project 5 Thumbnail"
+                            class="w-full h-auto object-cover rounded-t-lg">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-semibold mb-2">Music Video Production</h3>
+                            <p class="text-gray-400 mb-4">Visuals that amplify the rhythm and soul of the music.</p>
+                            <a href="#" class="text-indigo-400 hover:text-indigo-300 font-medium">Watch Video &rarr;</a>
+                        </div>
+                    </div>
+                    <!-- Portfolio Item 6 -->
+                    <div
+                        class="bg-gray-800 rounded-lg shadow-xl overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                        <img src="https://placehold.co/600x400/3a3a5a/e0e0e0?text=Project+6" alt="Project 6 Thumbnail"
+                            class="w-full h-auto object-cover rounded-t-lg">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-semibold mb-2">Explainer Video Series</h3>
+                            <p class="text-gray-400 mb-4">Simplifying complex concepts with engaging animations.</p>
+                            <a href="#" class="text-indigo-400 hover:text-indigo-300 font-medium">Watch Video &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services-section" class="py-20 px-4 bg-gray-800 content-section">
+            <div class="container mx-auto text-center max-w-5xl">
+                <h2 class="text-4xl font-bold text-white mb-12">My Services</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Service Card 1 -->
+                    <div
+                        class="bg-gray-700 rounded-lg shadow-xl p-8 transform hover:scale-105 transition duration-300 ease-in-out">
+                        <h3 class="text-2xl font-semibold text-white mb-4">Post-Production Editing</h3>
+                        <p class="text-gray-300">
+                            Comprehensive video editing from raw footage to polished final product. Includes cutting,
+                            sequencing, and pacing.
+                        </p>
+                    </div>
+                    <!-- Service Card 2 -->
+                    <div
+                        class="bg-gray-700 rounded-lg shadow-xl p-8 transform hover:scale-105 transition duration-300 ease-in-out">
+                        <h3 class="text-2xl font-semibold text-white mb-4">Color Grading & Correction</h3>
+                        <p class="text-gray-300">
+                            Enhancing visual appeal and consistency with professional color grading and precise color
+                            correction.
+                        </p>
+                    </div>
+                    <!-- Service Card 3 -->
+                    <div
+                        class="bg-gray-700 rounded-lg shadow-xl p-8 transform hover:scale-105 transition duration-300 ease-in-out">
+                        <h3 class="text-2xl font-semibold text-white mb-4">Sound Design & Mixing</h3>
+                        <p class="text-gray-300">
+                            Creating immersive audio experiences with sound effects, music, voiceover mixing, and audio
+                            mastering.
+                        </p>
+                    </div>
+                    <!-- Service Card 4 -->
+                    <div
+                        class="bg-gray-700 rounded-lg shadow-xl p-8 transform hover:scale-105 transition duration-300 ease-in-out">
+                        <h3 class="text-2xl font-semibold text-white mb-4">Motion Graphics & VFX</h3>
+                        <p class="text-gray-300">
+                            Adding dynamic titles, lower thirds, animations, and visual effects to elevate your video
+                            content.
+                        </p>
+                    </div>
+                    <!-- Service Card 5 -->
+                    <div
+                        class="bg-gray-700 rounded-lg shadow-xl p-8 transform hover:scale-105 transition duration-300 ease-in-out">
+                        <h3 class="text-2xl font-semibold text-white mb-4">Social Media Optimization</h3>
+                        <p class="text-gray-300">
+                            Tailoring videos for specific social media platforms, including aspect ratios, captions, and
+                            engagement hooks.
+                        </p>
+                    </div>
+                    <!-- Service Card 6 -->
+                    <div
+                        class="bg-gray-700 rounded-lg shadow-xl p-8 transform hover:scale-105 transition duration-300 ease-in-out">
+                        <h3 class="text-2xl font-semibold text-white mb-4">Consultation & Strategy</h3>
+                        <p class="text-gray-300">
+                            Guiding you through the video production process, from concept development to final
+                            delivery.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section id="testimonials-section" class="py-20 px-4 bg-gray-900 content-section">
+            <div class="container mx-auto text-center max-w-4xl">
+                <h2 class="text-4xl font-bold text-white mb-12">What Clients Say</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Testimonial 1 -->
+                    <div class="bg-gray-800 rounded-lg shadow-xl p-8">
+                        <p class="text-gray-300 italic mb-4">
+                            "Your Name's editing skills are exceptional! They transformed our raw footage into a
+                            captivating story that exceeded all our expectations. Highly recommend!"
+                        </p>
+                        <p class="font-semibold text-white">- Jane Doe, CEO of InnovateCorp</p>
+                    </div>
+                    <!-- Testimonial 2 -->
+                    <div class="bg-gray-800 rounded-lg shadow-xl p-8">
+                        <p class="text-gray-300 italic mb-4">
+                            "Working with Your Name was a seamless experience. Their attention to detail and creative
+                            input brought our music video to life. Truly a professional!"
+                        </p>
+                        <p class="font-semibold text-white">- John Smith, Musician</p>
+                    </div>
+                    <!-- Testimonial 3 -->
+                    <div class="bg-gray-800 rounded-lg shadow-xl p-8">
+                        <p class="text-gray-300 italic mb-4">
+                            "The quality of the final product was outstanding. Your Name understood our vision perfectly
+                            and delivered a corporate video that truly stands out."
+                        </p>
+                        <p class="font-semibold text-white">- Emily White, Marketing Director</p>
+                    </div>
+                    <!-- Testimonial 4 -->
+                    <div class="bg-gray-800 rounded-lg shadow-xl p-8">
+                        <p class="text-gray-300 italic mb-4">
+                            "From concept to completion, Your Name provided invaluable expertise. Their editing made our
+                            documentary shine, highlighting the key messages beautifully."
+                        </p>
+                        <p class="font-semibold text-white">- David Green, Documentary Filmmaker</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact-section" class="py-20 px-4 bg-gray-800 content-section">
+            <div class="container mx-auto text-center max-w-2xl">
+                <h2 class="text-4xl font-bold text-white mb-8">Get in Touch</h2>
+                <p class="text-lg text-gray-300 mb-10">
+                    Ready to start your next video project? Fill out the form below or reach out directly!
+                </p>
+                <form id="contact-form" class="bg-gray-700 p-8 rounded-lg shadow-xl">
+                    <div class="mb-6 text-left">
+                        <label for="name" class="block text-gray-200 text-sm font-bold mb-2">Name</label>
+                        <input type="text" id="name" name="name"
+                            class="shadow appearance-none border rounded-lg w-full py-3 px-4 text-gray-900 leading-tight focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-gray-200"
+                            placeholder="Your Name" required>
+                    </div>
+                    <div class="mb-6 text-left">
+                        <label for="email" class="block text-gray-200 text-sm font-bold mb-2">Email</label>
+                        <input type="email" id="email" name="email"
+                            class="shadow appearance-none border rounded-lg w-full py-3 px-4 text-gray-900 leading-tight focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-gray-200"
+                            placeholder="your.email@example.com" required>
+                    </div>
+                    <div class="mb-6 text-left">
+                        <label for="message" class="block text-gray-200 text-sm font-bold mb-2">Message</label>
+                        <textarea id="message" name="message" rows="6"
+                            class="shadow appearance-none border rounded-lg w-full py-3 px-4 text-gray-900 leading-tight focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-gray-200"
+                            placeholder="Tell me about your project..." required></textarea>
+                    </div>
+                    <button type="submit" class="p-2 rounded-lg btn-primary w-full">Send Message</button>
+                    <div id="form-message" class="mt-4 text-center text-sm font-semibold"></div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 py-8 px-4 text-center text-gray-400">
+        <div class="container mx-auto">
+            <p>&copy; 2025 Your Name. All rights reserved.</p>
+            <div class="mt-4 space-x-4">
+                <a href="#" class="hover:text-indigo-400 transition duration-200">Privacy Policy</a>
+                <a href="#" class="hover:text-indigo-400 transition duration-200">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    </div>
+    <!-- Back to Top Button -->
+
+
+    <!-- Video Modal -->
+    <div id="video-modal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <div class="relative w-full" style="padding-bottom: 56.25%;">
+                <iframe id="modal-video-iframe" class="absolute top-0 left-0 w-full h-full rounded-lg" src=""
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="video-editor-controls">
+        <div class="video-strip-container">
+            <div class="video-strip mr-48" id="videoStrip">
+                <!-- Static clips corresponding to sections -->
+                <!-- Ensure these data-section-id attributes match the IDs of your main content sections -->
+                <div class="video-clip" data-section-id="home-section"><span>Home</span></div>
+                <div class="video-clip" data-section-id="about-section"><span>About</span></div>
+                <div class="video-clip" data-section-id="portfolio-section"><span>Portfolio</span></div>
+                <div class="video-clip" data-section-id="services-section"><span>Services</span></div>
+                <div class="video-clip" data-section-id="testimonials-section"><span>Testimonials</span></div>
+                <div class="video-clip" data-section-id="contact-section"><span>Contact</span></div>
+            </div>
+            <div class="playhead"></div>
+        </div>
+        <div class="playback-buttons">
+
+            <button id="playPauseBtn" class="play-pause-btn">
+                <svg id="playIcon" viewBox="0 0 24 24" width="24" height="24" style="display: inline-block;">
+                    <path d="M8 5v14l11-7z" />
+                </svg>
+
+                <svg id="pauseIcon" viewBox="0 0 24 24" width="24" height="24" style="display: none;">
+                    <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
+                </svg>
+                <span class="btn-label">Play</span>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a[href^="#"], #mobile-menu a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const closeMobileMenuButton = document.getElementById('close-mobile-menu');
+
+        function showMobileMenu() {
+            mobileMenu.classList.remove('hidden');
+            document.body.style.overflow = 'hidden'; // Prevent scrolling when menu is open
+        }
+
+        function hideMobileMenu() {
+            mobileMenu.classList.add('hidden');
+            document.body.style.overflow = ''; // Restore scrolling
+        }
+
+        mobileMenuButton.addEventListener('click', showMobileMenu);
+        closeMobileMenuButton.addEventListener('click', hideMobileMenu);
+
+        // Close mobile menu when a link is clicked
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', hideMobileMenu);
+        });
+
+        // Contact Form Submission (Client-side only for now)
+        const contactForm = document.getElementById('contact-form');
+        const formMessage = document.getElementById('form-message');
+
+        contactForm.addEventListener('submit', function (e) {
+            e.preventDefault(); // Prevent actual form submission
+
+            // Basic client-side validation
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            if (name === '' || email === '' || message === '') {
+                formMessage.textContent = 'Please fill in all fields.';
+                formMessage.classList.add('text-red-500');
+                formMessage.classList.remove('text-green-500');
+                return;
+            }
+
+            // Simulate form submission
+            formMessage.textContent = 'Sending message...';
+            formMessage.classList.remove('text-red-500', 'text-green-500');
+
+            setTimeout(() => {
+                formMessage.textContent = 'Thank you for your message! I will get back to you soon.';
+                formMessage.classList.add('text-green-500');
+                contactForm.reset(); // Clear the form
+            }, 2000); // Simulate a 2-second delay
+        });
+
+        // Theme Switcher Functionality
+        const themeToggle = document.getElementById('theme-toggle');
+        const moonIcon = document.getElementById('moon-icon');
+        const sunIcon = document.getElementById('sun-icon');
+        const body = document.body;
+
+        // Function to set the theme
+        function setTheme(theme) {
+            if (theme === 'light') {
+                body.classList.add('light-theme');
+                moonIcon.classList.add('hidden');
+                sunIcon.classList.remove('hidden');
+                localStorage.setItem('theme', 'light');
+            } else {
+                body.classList.remove('light-theme');
+                moonIcon.classList.remove('hidden');
+                sunIcon.classList.add('hidden');
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        // Check for saved theme preference on load
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                setTheme(savedTheme);
+            } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+                // Default to light theme if user prefers it and no saved preference
+                setTheme('light');
+            } else {
+                // Default to dark theme
+                setTheme('dark');
+            }
+        });
+
+        // Toggle theme on button click
+        themeToggle.addEventListener('click', () => {
+            if (body.classList.contains('light-theme')) {
+                setTheme('dark');
+            } else {
+                setTheme('light');
+            }
+        });
+
+        // IMPORTANT: Replace 'VIDEO_ID_1', 'VIDEO_ID_2', etc., with actual YouTube or Vimeo video IDs.
+        // For YouTube, it's the string after 'v=' in the URL.
+        // Example: For https://www.youtube.com/watch?v=dQw4w9WgXcQ, the ID is dQw4w9WgXcQ
+    </script>
+
+</body>
+
+</html>

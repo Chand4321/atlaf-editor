@@ -1,0 +1,223 @@
+/* Main Content Sections (Example styles - adjust to your design) */
+
+
+
+/* Container for the video strip - fixed at the bottom */
+.video-editor-controls {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 120px;
+    /* Height of the strip */
+    background-color: #0a0a0a;
+    /* Dark background */
+    border-top: 1px solid #333;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* Space between strip and buttons */
+    box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    /* Ensure it stays on top of other content */
+    padding-right: 20px;
+    /* Padding for the button */
+    box-sizing: border-box;
+}
+
+/* Video Strip Container */
+.video-strip-container {
+    flex-grow: 1;
+    /* Allows strip to take available space */
+    height: 100%;
+    overflow: hidden;
+    /* Hide parts of the strip that are outside */
+    position: relative;
+    /* For playhead positioning */
+}
+
+/* The actual strip that moves */
+.video-strip {
+    display: flex;
+    white-space: nowrap;
+    /* Prevent clips from wrapping */
+    transform: translateX(0);
+    /* Initial position */
+    will-change: transform;
+    /* Optimize for animation */
+    padding: 0 50vw;
+    /* Padding to allow clips to enter/exit smoothly from center */
+    height: 100%;
+    /* Ensure strip fills container height */
+    align-items: center;
+    /* Vertically center clips */
+    transition: transform 0.3s ease-out;
+    /* Smooth transition for strip movement */
+}
+
+/* Individual Video Clip */
+.video-clip {
+    width: 160px;
+    /* Width of each clip */
+    height: 90px;
+    /* Height of each clip */
+    background-color: #444;
+    border: 2px solid #555;
+    border-radius: 6px;
+    margin: 0 8px;
+    /* Space between clips */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.9em;
+    color: #bbb;
+    flex-shrink: 0;
+    /* Prevent clips from shrinking */
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
+    transition: border-color 0.2s ease, transform 0.2s ease;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    /* Indicate clickable */
+}
+
+.video-clip:hover {
+    border-color: #00e676;
+    /* Highlight on hover */
+    transform: translateY(-2px);
+}
+
+.video-clip::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(0, 230, 118, 0.1) 0%, rgba(0, 230, 118, 0.0) 50%, rgba(0, 230, 118, 0.1) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.video-clip.active::before {
+    opacity: 1;
+}
+
+
+.video-clip span {
+    z-index: 1;
+    /* background-color: rgba(0, 0, 0, 0.5); */
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+/* Playhead indicator */
+.playhead {
+    position: absolute;
+    /* Positioned relative to video-strip-container */
+    bottom: 0;
+    left: 50%;
+    /* Center the playhead */
+    transform: translateX(-50%);
+    width: 4px;
+    height: 100%;
+    /* Same height as the strip container */
+    background-color: #00e676;
+    /* Green accent */
+    z-index: 1001;
+    /* Above the strip */
+    box-shadow: 0 0 10px rgba(0, 230, 118, 0.8);
+    border-radius: 2px;
+}
+
+/* Playback Buttons */
+.playback-buttons {
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    /* Space from the strip */
+}
+
+.play-pause-btn {
+    background-color: #00e676;
+    color: #1a1a1a;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.1em;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 230, 118, 0.4);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.play-pause-btn:hover {
+    background-color: #00c853;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 230, 118, 0.6);
+}
+
+.play-pause-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 230, 118, 0.2);
+}
+
+/* Icon for play/pause */
+.play-pause-btn svg {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+    /* Inherit color from button text */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .video-editor-controls {
+        height: 100px;
+        padding-right: 15px;
+    }
+
+    .video-clip {
+        width: 120px;
+        height: 70px;
+        margin: 0 6px;
+    }
+
+    .play-pause-btn {
+        padding: 8px 15px;
+        font-size: 1em;
+    }
+
+    .play-pause-btn svg {
+        width: 18px;
+        height: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .video-editor-controls {
+        height: 80px;
+        padding-right: 10px;
+    }
+
+    .video-clip {
+        width: 90px;
+        height: 50px;
+        margin: 0 4px;
+        font-size: 0.7em;
+    }
+
+    .play-pause-btn {
+        padding: 6px 12px;
+        font-size: 0.9em;
+        gap: 5px;
+    }
+
+    .play-pause-btn svg {
+        width: 16px;
+        height: 16px;
+    }
+}
